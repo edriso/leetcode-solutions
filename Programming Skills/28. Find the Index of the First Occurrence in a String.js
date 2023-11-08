@@ -4,31 +4,40 @@
  * @param {string} needle
  * @return {number}
  */
-const strStr = function (haystack, needle) {
-  let matchedStr = '';
-  let matchIndex = 0;
-  let searchedIndex = 0;
+function strStr(haystack, needle) {
+  if (needle === '') return 0;
 
-  while (matchedStr !== needle && searchedIndex <= haystack.length) {
-    for (let i = searchedIndex; i < haystack.length; i++) {
-      if (matchedStr === needle) break;
-
-      if (haystack[i] === needle[matchedStr.length]) {
-        matchedStr += haystack[i];
-        continue;
-      }
-
-      matchedStr = '';
-      matchIndex = i + 1;
+  for (let i = 0; i <= haystack.length - needle.length; i++) {
+    if (haystack.substring(i, i + needle.length) === needle) {
+      return i;
     }
-    searchedIndex++;
   }
 
-  if (matchedStr !== needle) return -1;
+  return -1;
+}
 
-  return matchIndex;
-};
+//// Another solution
+// const strStr = function (haystack, needle) {
+//   if (haystack.length < needle.length) return -1;
 
-console.log(strStr('sadbutsad', 'sad')); //0
-console.log(strStr('leetcode', 'leeto')); //-1
-console.log(strStr('mississippi', 'issip')); //4
+//   for (let i = 0; i <= haystack.length - needle.length; i++) {
+//     let match = true;
+//     for (let j = 0; j < needle.length; j++) {
+//       if (haystack[i + j] !== needle[j]) {
+//         match = false;
+//         break;
+//       }
+//     }
+//     if (match) return i;
+//   }
+
+//   return -1;
+// };
+
+// console.log(strStr('sadbutsad', 'sad')); //0
+// console.log(strStr('leetcode', 'leeto')); //-1
+// console.log(strStr('aaa', 'aaaa')); //-1
+// console.log(strStr('mississippi', 'issip')); //4
+// console.log(strStr('mississippi', 'pi')); //9
+// console.log(strStr('mississippi', 'pii')); //-1
+// console.log(strStr('aabaaabaaac', 'aabaaac')); //4
