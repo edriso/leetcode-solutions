@@ -4,32 +4,28 @@
  * @param {string} t
  * @return {boolean}
  */
-// const isAnagram = function (s, t) {
-//   if (
-//     s.length === t.length &&
-//     [...s].sort().join('') === [...t].sort().join('')
-//   ) {
-//     return true;
-//   }
-//   return false;
-// };
+const isAnagram = function (s, t) {
+  return (
+    s.length === t.length && [...s].sort().join('') === [...t].sort().join('')
+  );
+};
 
 //// another solution
-const isAnagram = function (s, t) {
-  if (s.length !== t.length) return false;
+// const isAnagram = function (s, t) {
+//   if (s.length !== t.length) return false;
 
-  const charCount = [...s].reduce((acc, curr) => {
-    acc[curr] = (acc[curr] || 0) + 1;
-    return acc;
-  }, {});
+//   const charCount = [...s].reduce((acc, curr) => {
+//     acc[curr] = (acc[curr] || 0) + 1;
+//     return acc;
+//   }, {});
 
-  for (const char of t) {
-    if (!charCount[char]) return false;
-    charCount[char]--;
-  }
+//   for (const char of t) {
+//     if (!charCount[char]) return false;
+//     charCount[char]--;
+//   }
 
-  return true;
-};
+//   return true;
+// };
 
 console.log(isAnagram('anagram', 'nagaram')); //true
 // console.log(isAnagram('rat', 'car')); //false
