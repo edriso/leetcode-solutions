@@ -5,17 +5,19 @@
  */
 const repeatedSubstringPattern = function (s) {
   for (let i = 1; i <= s.length / 2; i++) {
-    let pattern = s.slice(0, i);
-    let counter = 0;
-    for (let j = 0; j < s.length; j += i) {
-      if (s.slice(j, i + j) === pattern) {
-        counter++;
-        if (counter === s.length / i) {
-          return true;
+    if (s.length % i === 0) {
+      let pattern = s.slice(0, i);
+      let counter = 0;
+      for (let j = 0; j < s.length; j += i) {
+        if (s.slice(j, i + j) === pattern) {
+          counter++;
+          if (counter === s.length / i) {
+            return true;
+          }
+          continue;
         }
-        continue;
+        break;
       }
-      break;
     }
   }
 
