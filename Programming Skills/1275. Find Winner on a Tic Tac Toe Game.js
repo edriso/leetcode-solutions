@@ -17,7 +17,7 @@ const tictactoe = function (moves) {
   let possibleWinnerMoves = {};
   let possibleWinnerPlayer;
 
-  const addPossibleWinnerMover = (move) => {
+  const addPossibleWinnerMove = (move) => {
     let moveIndex;
     if (move[0] === 0) moveIndex = move[1];
     else if (move[0] === 1) moveIndex = move[1] + 3;
@@ -28,14 +28,14 @@ const tictactoe = function (moves) {
   if (moves.length % 2 === 1) {
     possibleWinnerPlayer = "A";
     for (let i = 0; i < moves.length; i += 2) {
-      addPossibleWinnerMover(moves[i]);
+      addPossibleWinnerMove(moves[i]);
     }
   }
 
   if (moves.length % 2 === 0) {
     possibleWinnerPlayer = "B";
     for (let i = 1; i < moves.length; i += 2) {
-      addPossibleWinnerMover(moves[i]);
+      addPossibleWinnerMove(moves[i]);
     }
   }
 
